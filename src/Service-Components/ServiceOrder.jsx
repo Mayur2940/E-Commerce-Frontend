@@ -19,3 +19,17 @@ export const axiosGetAllOrders = async (id) => {
     id = id || '';
     return await axios.get(Backend_API + '/findall/' + id);
 }
+
+export const updateOrderStatus = async (orderId) => {
+    try {
+      // Send a PUT request to the backend endpoint with the orderId
+      const response = await axios.put(`${Backend_API}/status/${orderId}`);
+      
+      // Return the response data (optional)
+      return response.data;
+    } catch (error) {
+      // Handle errors
+      console.error('Error updating order status:', error);
+      throw error; // Re-throw the error to be handled by the caller
+    }
+  };

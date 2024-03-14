@@ -117,8 +117,8 @@ const DisplayCart = () => {
         className="place"
         style={{
           marginTop:'20px',
-          // alignitems: 'center',
-          backgroundColor: 'Orange',
+          alignitems: 'center',
+          backgroundColor: 'purple',
           color: 'white',
           '&:hover': {
             backgroundColor: 'white',
@@ -127,7 +127,7 @@ const DisplayCart = () => {
         }}
       >
     
-        <strong style={{ marginTop: '20px' }}>Place Order</strong>
+        <strong>Place Order</strong>
       </Button>
     )}
   </div>

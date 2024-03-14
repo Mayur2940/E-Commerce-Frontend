@@ -8,7 +8,7 @@ function DisplayImageCust({ image }) {
     const filename = parts[parts.length - 1];
 
     console.log(filename);
-    const imageUrl = `http://localhost:8083/images/${filename}`;
+    const imageUrl = `http://localhost:8080/images/${filename}`;
 
     return (
         <div>
