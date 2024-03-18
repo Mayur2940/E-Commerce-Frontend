@@ -25,6 +25,7 @@ const initialvalue = {
   number: '',
   address: '',
 };
+
 const UserRegister = () => {
   const [user, setUser] = useState(initialvalue);
   const { username, password, email, number, address } = user;
@@ -92,7 +93,7 @@ const UserRegister = () => {
       <HomeNavbar />
       <div className='register-form'>
         <Container maxWidth='sm'>
-          <Box my={5}>
+          <Box my={1} border={1} borderRadius={10} p={2} tyle={{ marginTop: '50px' }}>
             <Typography variant='h5' align='center'>
               Customer Registration Form
             </Typography>
@@ -100,8 +101,9 @@ const UserRegister = () => {
               <Grid container spacing={2}>
                 <Grid item xs={6}>
                   <FormControl>
-                    <InputLabel>Customer Name</InputLabel>
+                    <InputLabel htmlFor='username'>Customer Name</InputLabel>
                     <Input
+                      id='username'
                       onChange={(e) => onValueInput(e)}
                       name='username'
                       value={username}
@@ -113,8 +115,9 @@ const UserRegister = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <FormControl>
-                    <InputLabel>Customer Email</InputLabel>
+                    <InputLabel htmlFor='email'>Customer Email</InputLabel>
                     <Input
+                      id='email'
                       onChange={(e) => onValueInput(e)}
                       name='email'
                       value={email}
@@ -128,8 +131,9 @@ const UserRegister = () => {
               <Grid container spacing={2}>
                 <Grid item xs={6}>
                   <FormControl>
-                    <InputLabel>Password</InputLabel>
+                    <InputLabel htmlFor='password'>Password</InputLabel>
                     <Input
+                      id='password'
                       onChange={(e) => onValueInput(e)}
                       name='password'
                       value={password}
@@ -142,8 +146,9 @@ const UserRegister = () => {
                 </Grid>
                 <Grid item xs={6}>
                   <FormControl>
-                    <InputLabel>Mobile Number</InputLabel>
+                    <InputLabel htmlFor='number'>Mobile Number</InputLabel>
                     <Input
+                      id='number'
                       onChange={(e) => onValueInput(e)}
                       name='number'
                       value={number}
@@ -155,8 +160,9 @@ const UserRegister = () => {
                 </Grid>
               </Grid>
               <FormControl fullWidth>
-                <InputLabel>Address</InputLabel>
+                <InputLabel htmlFor='address'>Address</InputLabel>
                 <Input
+                  id='address'
                   onChange={(e) => onValueInput(e)}
                   name='address'
                   value={address}
@@ -165,19 +171,18 @@ const UserRegister = () => {
                   <span style={{ color: 'red' }}>{errors.address}</span>
                 )}
               </FormControl>
-              <Box my={3}>
+              <Box my={3} display='flex' justifyContent='space-between'>
                 <Button
                   variant='contained'
                   onClick={() => registerUser()}
-                  style={{ backgroundColor: 'Blue', color: 'white', margin: '0px 70px' }}
-                  align='center'
+                  style={{ backgroundColor: 'blue', color: 'white' }}
                 >
                   Register
                 </Button>
                 <Button
                   onClick={() => history.push('/user')}
                   variant='contained'
-                  style={{ backgroundColor: 'red', color: 'white', margin: '0px 10px' }}
+                  style={{ backgroundColor: 'red', color: 'white' }}
                 >
                   Cancel
                 </Button>

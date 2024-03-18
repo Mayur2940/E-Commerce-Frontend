@@ -8,7 +8,7 @@ import UserPage from '../User-Components/UserPage';
 import UserRegister from '../User-Components/UserRegister';
 import HomeNavbar from './HomeNavbar';
 import Homemain from './Homemain';
-import AddUser from '../Admin-User-Component/AddUser';
+// import AddUser from '../Admin-User-Component/AddUser';
 const Home = () => {
     return (
         <div>

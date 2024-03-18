@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  /* overflow: hidden; */
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
@@ -21,15 +22,35 @@ code {
 /* Homemain */
 
 .banner-text {
-  position: absolute;
-  top: 23%;
-  left: 52%;
-  transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   padding: 20px;
-  
 }
+
+/* banner css */
+/* CSS for .store-name */
+.store-name {
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #1e1f1f; /* Background color for the store name */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 10px;
+  display: inline-block; /* Ensure inline block display */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+/* CSS for .store-description */
+.store-description {
+  font-size: 20px;
+  color: #fff;
+  background-color: #1e1f1f; /* Background color for the store description */
+  padding: 8px 16px; /* Adjust padding as needed */
+  border-radius: 8px;
+  display: inline-block; /* Ensure inline block display */
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
 
 .banner-text h1 {
   color: rgb(202, 210, 179);
@@ -101,18 +122,73 @@ code {
 /* UserLogin.css */
 
 .login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
   margin-left: 0px;
   text-align: center;
   margin-top: 0px;
   background-color: #aec5bf;
   position: fixed;
   left: 50%; /* Center the form horizontally */
-  top: 150px;
+  top: 130px;
   width: 300px;
   border-radius: 30px;
   transform: translateX(-50%); /* Center the form horizontally */
   padding: 40px;
   box-shadow: 4px 9px 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+}
+
+.form-container {
+  background-color: #ddefda;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
 }
 
 .form-control {
@@ -142,6 +218,8 @@ code {
 .register-button {
   margin-top: 20px;
 }
+
+
 
 
 
@@ -243,4 +321,86 @@ a:hover {
 .product-card:hover .hover-effect:hover a {
   text-decoration: none;
   color: white;
+}
+
+/* Home style */
+
+.welcome {
+  font-size: 3.5rem;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #8bba71; /* Set the background color */
+  padding: 20px; /* Add some padding for spacing */
+  background-image: linear-gradient(to bottom, #388484, #53698d);
+}
+
+.welcome .moving-text {
+  display: block;
+  white-space: nowrap;
+  animation: moveText 10s linear infinite;
+}
+
+.welcome-container {
+  
+  border: 2px solid;
+  padding: 20px;
+  border-image: linear-gradient(to right, rgb(76, 124, 164), rgb(202, 202, 158)); /* Define the linear gradient */
+  border-image-slice: 1; /* Ensure the border image covers the entire border */
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* HomeNav bottom bar */
+.bottom-content {
+  position: relative;
+  width: 100%;
+  height: 80px; /* Adjust height as needed */
+  background: linear-gradient(to right, #c7b4b3, #73a3d4); /* Linear gradient background */
+  overflow: hidden;
+  margin-top: 234px; 
+}
+
+.bottom-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red; /* Text color */
+  font-size: 20px; /* Adjust font size */
+  font-weight: normal; /* Adjust font weight */
+  font-family: Arial, sans-serif; /* Adjust font family */
+  text-align: center; /* Center text horizontally */
+  /* padding: 1px; Add padding */
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  white-space: nowrap;
+  animation: moveText 10s linear infinite; /* Adjust animation duration as needed */
+}
+
+@keyframes moveText {
+  0% {
+     transform: translateX(100%);
+  }
+  100% {
+     transform: translateX(-100%);
+  }
+}
+
+
+@keyframes moveText {
+  0% {
+     transform: translateX(100%);
+  }
+  100% {
+     transform: translateX(-100%);
+  }
 }

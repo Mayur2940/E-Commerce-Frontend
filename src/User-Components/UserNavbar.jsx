@@ -6,12 +6,12 @@ const styling = makeStyles({
   link: {
     textDecoration: 'none',
     color: 'white',
-    padding: '10px 20px', // Add some padding for the button
-    transition: 'background-color 0.3s, color 0.3s', // Add a transition for smooth color and background color changes
+    padding: '10px 20px',
+    transition: 'background-color 0.3s, color 0.3s',
     marginLeft: '40px',
     '&:hover': {
-      backgroundColor: 'aqua', // Change the background color on hover
-      color: 'black', // Change the text color on hover
+      backgroundColor: 'aqua',
+      color: 'black',
     },
   },
   logout: {
@@ -19,7 +19,7 @@ const styling = makeStyles({
     color: 'white',
     padding: '10px 20px',
     transition: 'background-color 0.3s, color 0.3s',
-    marginLeft: '600px',
+    marginLeft: 'auto', // This will push the logout button to the rightmost position
     '&:hover': {
       backgroundColor: 'aqua',
       color: 'black',
@@ -27,7 +27,7 @@ const styling = makeStyles({
   },
 });
 
-const UserNavbar = () => {
+const UserNavbar = ({ isAdmin }) => { // Assuming isAdmin is a prop indicating if the user is an admin
   const styles = styling();
 
   return (
@@ -36,12 +36,16 @@ const UserNavbar = () => {
         <NavLink to="viewproducts" className={styles.link}>
           All Products
         </NavLink>
-        <NavLink to="cart" className={styles.link}>
-          My Cart
-        </NavLink>
-        <NavLink to="orders" className={styles.link}>
-          My Orders
-        </NavLink>
+        {!isAdmin && ( // Render these links only if the user is not an admin
+          <>
+            <NavLink to="cart" className={styles.link}>
+              My Cart
+            </NavLink>
+            <NavLink to="orders" className={styles.link}>
+              My Orders
+            </NavLink>
+          </>
+        )}
         <NavLink to="/ulogout" className={styles.logout}>
           Logout
         </NavLink>

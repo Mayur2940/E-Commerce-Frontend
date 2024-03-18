@@ -1,4 +1,8 @@
 /* Styling for the AllProductCust component */
+body {
+    overflow-x: hidden;
+  }
+  
 .all-product-cust {
     display: flex;
     justify-content: space-between;
@@ -8,12 +12,14 @@
 .categories-paper {
     flex: 0 0 200px; /* Adjust the width as needed, e.g., 200px */
     padding: 16px;
-    max-height: 300px;
-    background: #fff;
+    max-height: 100px; /* Set height to auto for dynamic height */
+    overflow-y: 200px; /* Add scroll when needed */
+    background: #0e534d;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .category-title {
     font-size: 18px;
@@ -29,11 +35,12 @@
 .category-item {
     padding: 8px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s; /* Adjust the transition timing */
+    background-color: #8fd5c6;
 }
 
 .category-item:hover {
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
 }
 
 .category-item.selected {
@@ -52,19 +59,13 @@
 .product-cards .MuiCard-root {
     width: 100%;
     max-width: 300px;
-    transition: transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-} .product-cards .MuiCard-root {
-    width: 100%;
-    max-width: 276px;
-    transition: transform 0.2s;
+    transition: transform 0.3s; /* Adjust the transition timing */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
 .product-cards .MuiCard-root:hover {
-    transform: scale(1.03);
+    transform: scale(1.05); /* Increase the scale on hover */
 }
 
 .image-container {
@@ -74,18 +75,21 @@
     justify-content: center;
     overflow: hidden;
     position: relative;
-    border: 2px solid #e0e0e0; /* Add a border around the image container */
-    border-radius: 4px; /* Add border radius for rounded corners */
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
 }
 
 .image-container img {
-    margin-top: 60px;
     max-height: 100%;
     height: auto;
     max-width: 100%;
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+    object-fit: contain;
+    transition: transform 0.3s; /* Add transition for image size */
 }
 
+.image-container:hover img {
+    transform: scale(1.1); /* Increase image size on hover */
+}
 
 .MuiCardContent-root {
     text-align: center;
@@ -104,9 +108,37 @@
     border: none;
     padding: 8px 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s; /* Adjust the transition timing */
 }
 
 .MuiButton-root:hover {
-    background-color: #1976D2;
+    background-color: #1976D2; /* Darken the background color on hover */
+}
+
+
+.category-dropdown {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #fff; /* Background color for the dropdown */
+    color: #333; /* Text color */
+}
+
+/* Style for selected option */
+.category-dropdown option:checked {
+    background-color: #2196F3; /* Background color for selected option */
+    color: white; /* Text color for selected option */
+}
+
+/* Style for other options */
+.category-dropdown option {
+    background-color: white; /* Background color for unselected options */
+    color: #333; /* Text color for unselected options */
+}
+
+/* Hover effect for options */
+.category-dropdown option:hover {
+    background-color: #f0f0f0; /* Background color on hover */
 }

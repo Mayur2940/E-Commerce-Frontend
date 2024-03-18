@@ -74,10 +74,10 @@ const AdminLogin = () => {
         <div>
             <HomeNavbar />
             <div className='login-form'>
-                <Container maxWidth="sm">
+                <Container maxWidth="sm" className="form-container">
                     <Box my={5}>
-                        <Typography variant="h5" align="center" style={{ fontWeight: 'bold' ,  color: '#333'}}>Admin Login</Typography>
-                        <FormGroup>
+                        <Typography variant="h5" align="center" className="form-title">Admin Login</Typography>
+                        <FormGroup className="form-group">
                             <FormControl>
                                 <InputLabel>Admin Email</InputLabel>
                                 <Input onChange={(e) => onValueInput(e)} name="email" value={admindetails.email} />
@@ -87,11 +87,8 @@ const AdminLogin = () => {
                                 <Input onChange={(e) => onValueInput(e)} name="password" value={admindetails.password} type="password" />
                             </FormControl>
                             <Box my={3}>
-                                <Button variant="contained" onClick={() => adminCredentialsValidation(admindetails)} style={{ backgroundColor: 'Blue', color: 'white' }} align="center">Login</Button>
-                          </Box>
-                 
-                        
-
+                                <Button variant="contained" onClick={() => adminCredentialsValidation(admindetails)} className="submit-btn">Login</Button>
+                            </Box>
                         </FormGroup>
                     </Box>
                 </Container>
@@ -99,5 +96,6 @@ const AdminLogin = () => {
         </div>
     )
 }
+
 
 export default AdminLogin;

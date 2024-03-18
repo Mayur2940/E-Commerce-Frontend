@@ -67,23 +67,21 @@ const AllProductCust = () => {
                     Category
                 </Typography>
                 <div className="category-list">
-                    <div
-                        className={`category-item ${selectedCategoryId === '' ? 'selected' : ''}`}
-                        onClick={() => DisplayCategoryProducts('')}
-                    >
-                        All
-                    </div>
-                    {categories.map((category) => (
-                        <div
-                            key={category.categoryId}
-                            className={`category-item ${selectedCategoryId === category.categoryId ? 'selected' : ''}`}
-                            onClick={() => DisplayCategoryProducts(category.categoryId)}
-                        >
-                            {category.categoryName}
-                        </div>
-                    ))}
-                </div>
-            </Paper>
+    <select
+        value={selectedCategoryId}
+        onChange={(e) => DisplayCategoryProducts(e.target.value)}
+        className="category-dropdown"
+    >
+        <option value="">All</option>
+        {categories.map((category) => (
+            <option key={category.categoryId} value={category.categoryId}>
+                {category.categoryName}
+            </option>
+        ))}
+    </select>
+</div>
+
+</Paper>
 
             <div className="product-cards">
                 {product.map((data) => (

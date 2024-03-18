@@ -58,11 +58,11 @@ const AllOrders = () => {
                   <TableCell><b>{order.orderId}</b></TableCell>
                   <TableCell><b>{order.date}</b></TableCell>
                   <TableCell><b>{order.status}</b></TableCell>
-                  <TableCell><b>{order.orderedCartDTO.totalPrice}</b></TableCell>
+                  <TableCell><b>{order.orderedCartDTO ? (order.orderedCartDTO.totalPrice !== undefined ? order.orderedCartDTO.totalPrice : 'N/A') : 'N/A'}</b></TableCell>
                   <TableCell style={{ textAlign: 'center' }}>
                     <Link to={`/orders/${order.orderId}`} style={{ display: 'block' }}><b>See Items</b></Link>
                   </TableCell>
-                  <TableCell><b>{order.orderedCartDTO.customer.id}</b></TableCell>
+                  <TableCell><b>{order.orderedCartDTO && order.orderedCartDTO.customer ? order.orderedCartDTO.customer.id : 'N/A'}</b></TableCell>
                   <TableCell>
                     <Button variant="contained" style={{ backgroundColor: 'green', color: 'white' }} onClick={() => handleAccept(order.orderId)}>Accept</Button>
                   </TableCell>

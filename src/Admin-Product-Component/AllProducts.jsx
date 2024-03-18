@@ -48,7 +48,7 @@ const AllProducts = () => {
 
       <div className='cardcontainer'>
 
-        <Container >
+        <Container className="overflow-hidden">
 
           <Grid container spacing={3} >
             {product.map((data) => (

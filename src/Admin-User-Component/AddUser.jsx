@@ -109,10 +109,11 @@ const AddUser = () => {
     return (
         <div className='register-form'>
             <Container maxWidth="sm">
-                <Box my={5}>
+                <Box my={3}>
                     <Typography variant="h5" align="center">User Registration Form</Typography>
                     <FormGroup>
                         <FormControl>
+                            
                             <InputLabel>Customer Name</InputLabel>
                             <Input onChange={(e) => onValueInput(e)} name="username" value={username} />
                             {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
@@ -137,9 +138,9 @@ const AddUser = () => {
                             <Input onChange={(e) => onValueInput(e)} name="address" value={address} />
                             {errors.address && <span style={{ color: 'red' }}>{errors.address}</span>}
                         </FormControl>
-                        <Box my={3}>
+                        <Box my={2}>
                             <Button variant="text" onClick={() => AddUser()} color="primary" align="center">Add User</Button>
-                            <Button onClick={() => history.push("/allusers")} variant="text" color="secondary" align="center" style={{ margin: '0px 20px' }}>Cancel</Button>
+                            <Button onClick={() => history.push("/allusers")} variant="text" color="secondary" align="center" style={{ marginLeft: '20px' }}>Cancel</Button>
                             <br></br><br></br>
                         </Box>
                     </FormGroup>

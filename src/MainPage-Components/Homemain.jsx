@@ -11,16 +11,13 @@ const myComponent = {
 
 const Homemain = () => {
     return (
-        <div>
-            <div className="banner-text">
-          <h1>Furniture Mountain</h1>
-          <p>(Amazing Furniture, Even Better Price Tag)</p>
+        <div className="homemain-container">
+          <div className="banner-text">
+            <h1 className="store-name">Nostalgic Nest Preloved Furniture Store</h1>
+            <p className="store-description">("Magnificent Furniture, Exceptional Value Proposition")</p>
+          </div>
         </div>
-
-      
-        </div>
-         
-    )
+      )      
 }
 
 export default Homemain;
