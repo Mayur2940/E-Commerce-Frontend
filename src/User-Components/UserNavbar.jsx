@@ -19,7 +19,7 @@ const styling = makeStyles({
     color: 'white',
     padding: '10px 20px',
     transition: 'background-color 0.3s, color 0.3s',
-    marginLeft: 'auto', // This will push the logout button to the rightmost position
+    marginLeft: 'auto',
     '&:hover': {
       backgroundColor: 'aqua',
       color: 'black',
@@ -27,7 +27,7 @@ const styling = makeStyles({
   },
 });
 
-const UserNavbar = ({ isAdmin }) => { // Assuming isAdmin is a prop indicating if the user is an admin
+const UserNavbar = ({ isAdmin }) => {
   const styles = styling();
 
   return (
@@ -36,13 +36,16 @@ const UserNavbar = ({ isAdmin }) => { // Assuming isAdmin is a prop indicating i
         <NavLink to="viewproducts" className={styles.link}>
           All Products
         </NavLink>
-        {!isAdmin && ( // Render these links only if the user is not an admin
+        {!isAdmin && (
           <>
             <NavLink to="cart" className={styles.link}>
               My Cart
             </NavLink>
             <NavLink to="orders" className={styles.link}>
               My Orders
+            </NavLink>
+            <NavLink to="productsall" className={styles.link}> {/* Add this line for Upload Image */}
+              Add Product
             </NavLink>
           </>
         )}

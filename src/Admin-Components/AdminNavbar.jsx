@@ -12,7 +12,7 @@ const styling = makeStyles({
     '&:hover': {
       backgroundColor: 'aqua',
       color: 'black',
-      borderColor: 'white', // Add border color on hover
+      borderColor: 'white',
     },
   },
   logout: {
@@ -20,11 +20,11 @@ const styling = makeStyles({
     color: 'white',
     padding: '10px 10px',
     transition: 'background-color 0.3s, color 0.3s, border-color 0.3s',
-    marginLeft: '630px',
+    marginLeft: 'auto',
     '&:hover': {
       backgroundColor: 'aqua',
       color: 'black',
-      borderColor: 'white', // Add border color on hover
+      borderColor: 'white',
     },
   },
 });
@@ -47,6 +47,7 @@ const AdminNavbar = () => {
         <NavLink to="allorders" className={styles.link}>
           All Orders
         </NavLink>
+
         <NavLink to="/alogout" className={styles.logout}>
           Logout
         </NavLink>
