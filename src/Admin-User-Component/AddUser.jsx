@@ -107,7 +107,7 @@ const AddUser = () => {
         }
     }
     return (
-        <div className='register-form'>
+        <div className='register-form1'>
             <Container maxWidth="sm">
                 <Box my={3}>
                     <Typography variant="h5" align="center">User Registration Form</Typography>
@@ -138,11 +138,11 @@ const AddUser = () => {
                             <Input onChange={(e) => onValueInput(e)} name="address" value={address} />
                             {errors.address && <span style={{ color: 'red' }}>{errors.address}</span>}
                         </FormControl>
-                        <Box my={2}>
-                            <Button variant="text" onClick={() => AddUser()} color="primary" align="center">Add User</Button>
-                            <Button onClick={() => history.push("/allusers")} variant="text" color="secondary" align="center" style={{ marginLeft: '20px' }}>Cancel</Button>
-                            <br></br><br></br>
-                        </Box>
+                        <Box my={2} display="flex" justifyContent="center">
+    <Button variant="text" onClick={() => AddUser()} color="primary" style={{ fontWeight: 'bold' }}>Add User</Button>
+    <Button onClick={() => history.push("/allusers")} variant="text" color="secondary" style={{ marginLeft: '20px', fontWeight: 'bold' }}>Cancel</Button>
+</Box>
+
                     </FormGroup>
                 </Box>
             </Container>

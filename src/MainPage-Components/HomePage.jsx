@@ -12,19 +12,19 @@ const Homepage = () => {
 
 
    //used to handle Mouse Over Event
-   const handleMouseOver = () => {
+   // const handleMouseOver = () => {
 
-      setIsHovering(true);
+   //    setIsHovering(true);
 
-   };
+   // };
 
 
-   //used to Handle Mouse Out Event
-   const handleMouseOut = () => {
+   // //used to Handle Mouse Out Event
+   // const handleMouseOut = () => {
 
-      setIsHovering(false);
+   //    setIsHovering(false);
 
-   };
+   // };
 
    const StartPage = () => {
 

@@ -70,6 +70,15 @@ const AdminLogin = () => {
             // alert("Admin Credentials are Incorrect !!!!!!")
         }
     }
+
+    const handleLogin = () => {
+        if (!admindetails.email || !admindetails.password) {
+            notifyerror("Please enter both Email and Password.");
+        } else {
+            adminCredentialsValidation(admindetails);
+        }
+    }
+
     return (
         <div>
             <HomeNavbar />
@@ -87,7 +96,7 @@ const AdminLogin = () => {
                                 <Input onChange={(e) => onValueInput(e)} name="password" value={admindetails.password} type="password" />
                             </FormControl>
                             <Box my={3}>
-                                <Button variant="contained" onClick={() => adminCredentialsValidation(admindetails)} className="submit-btn">Login</Button>
+                                <Button variant="contained" onClick={handleLogin} className="submit-btn">Login</Button>
                             </Box>
                         </FormGroup>
                     </Box>

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const myComponent = {
-    width: '1250px',
-    height: '450px',
-    overflowX: 'hidden',
-    overflowY: 'scroll',
-    top: '120px',
-    left: '10px'
-};
+// const myComponent = {
+//     width: '1250px',
+//     height: '450px',
+//     overflowX: 'hidden',
+//     overflowY: 'scroll',
+//     top: '120px',
+//     left: '10px'
+// };
 
 const Homemain = () => {
     return (

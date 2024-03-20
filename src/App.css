@@ -6,7 +6,45 @@
   margin-left: 0px;
   text-align: center;
   margin-top: 0px;
-  background: linear-gradient(135deg, #1b8a6d, #63c2c5); /* Linear gradient background */
+  background: linear-gradient(
+    135deg,
+    rgb(179, 215, 227),
+    rgb(181, 199, 222),
+    rgb(145, 185, 234),
+    rgba(0, 0, 0, 0.1)
+); /* Linear gradient background with blue shades and a light shade of black */
+
+
+  height: 350px;
+  position: fixed;
+  left: 50%;
+  top: 130px;
+  width: 400px;
+  border-radius: 30px;
+  transform: translateX(-50%);
+  padding: 25px;
+  box-shadow: 4px 9px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #fff; /* Add border to the form */
+}
+
+.register-form1 {
+  display: flex;
+  flex-direction: column; /* Set flex-direction to column */
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+  text-align: center;
+  margin-top: 20px;
+  background: linear-gradient(
+    135deg,
+    rgb(179, 215, 227),
+    rgb(181, 199, 222),
+    rgb(145, 185, 234),
+    rgba(0, 0, 0, 0.1)
+); /* Linear gradient background with blue shades and a light shade of black */
+
+
+  height: 350px;
   position: fixed;
   left: 50%;
   top: 130px;
@@ -23,7 +61,20 @@
   width: 100%; /* Set width of form group to 100% */
 }
 
+.register-form1 .form-group {
+  margin-bottom: 20px;
+  width: 100%; /* Set width of form group to 100% */
+}
+
 .register-form .form-group label {
+  font-weight: bold;
+  color: #555;
+  display: block; /* Ensure label is displayed as block */
+  text-align: left; /* Align label text to the left */
+  margin-bottom: 5px; /* Add margin bottom to label */
+}
+
+.register-form1 .form-group label {
   font-weight: bold;
   color: #555;
   display: block; /* Ensure label is displayed as block */
@@ -39,10 +90,23 @@
   box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
+.register-form1 .form-group input {
+  width: calc(100% - 30px); /* Adjust input width to account for padding */
+  padding: 10px; /* Adjust input padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
 .register-form .form-group input:focus {
   outline: none;
   border-color: #007bff;
 }
+.register-form1 .form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
 
 
 .form-container {

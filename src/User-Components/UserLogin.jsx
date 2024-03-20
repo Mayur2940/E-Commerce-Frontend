@@ -66,6 +66,14 @@ const UserLogin = () => {
         }
     };
 
+    const handleLogin = () => {
+        if (!userdetails.email || !userdetails.password) {
+            notifyerror("Please enter both Email and Password.");
+        } else {
+            userCredentialsValidation(userdetails);
+        }
+    };
+
     return (
         <div>
             <HomeNavbar />
@@ -82,7 +90,7 @@ const UserLogin = () => {
                         <InputLabel>User Password</InputLabel>
                         <Input onChange={(e) => onValueChange(e)} name="password" value={userdetails.password} type="password" />
                     </FormControl>
-                    <Button variant="contained" onClick={() => userCredentialsValidation(userdetails)} className="submit-btn">
+                    <Button variant="contained" onClick={handleLogin} className="submit-btn">
                         Login
                     </Button>
                     <p className="register-text">Register if you are a new User!</p>

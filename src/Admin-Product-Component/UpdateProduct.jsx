@@ -6,22 +6,20 @@ import { axiosGetById, axiosUpdateProduct } from '../Service-Components/ServiceP
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { axiosAllCategories } from '../Service-Components/ServiceCategory';
-
+ 
 const myComponent = {
-    width: '550px',
-    height: '450px',
+    width: '470px',
+    height: '370px',
     overflowX: 'hidden',
     overflowY: 'hidden',
-    top: '100px',
-    left: '350px'
+    top: '170px',
+    left: '350px',
+    background: 'linear-gradient(to bottom right,#e6f7ff, #c2e0f0)',
 };
-
+ 
 toast.configure();
-
-
-
+ 
 const UpdateProduct = () => {
-
     const [product, setProduct] = useState({
         productName: '',
         productPrice: 0,
@@ -32,27 +30,24 @@ const UpdateProduct = () => {
     const [category, setCategories] = useState([]);
     const [errors, setErrors] = useState({});
     const { id } = useParams();
+ 
     const onValueInput = (e) => {
         setProduct({ ...product, [e.target.name]: e.target.value });
-        console.log(product);
-    }
-
+    };
+ 
     useEffect(() => {
-
-        loadProductdeatils();
-
-    },[])//eslint-disable-line
-
-    const loadProductdeatils = async () => {
+        loadProductDetails();
+    }, []); //eslint-disable-line
+ 
+    const loadProductDetails = async () => {
         const response = await axiosGetById(id);
-        setProduct(response.data)
+        setProduct(response.data);
         const responsecat = await axiosAllCategories();
-        setCategories(responsecat.data)
-    }
-
+        setCategories(responsecat.data);
+    };
+ 
     const history = useHistory();
-
-
+ 
     const notifysuccess = (msg) => {
         toast.success(msg, {
             position: 'top-center',
@@ -64,16 +59,14 @@ const UpdateProduct = () => {
             progress: undefined,
             theme: 'colored'
         });
-
-
-    }
+    };
+ 
     const validateForm = () => {
         let valid = true;
         const newErrors = {};
-
-
-        if (!/[0-9]/.test(product.productPrice)) {
-            newErrors.productPrice = 'Mustbe Number ';
+ 
+        if (!/^[0-9]+$/.test(product.productPrice)) {
+            newErrors.productPrice = 'Must be a Number';
             valid = false;
         }
         if (product.productName.length < 2) {
@@ -84,32 +77,31 @@ const UpdateProduct = () => {
             newErrors.brand = 'Brand must be at least 2 characters long.';
             valid = false;
         }
-
-
+ 
         setErrors(newErrors);
         return valid;
-    }
-
+    };
+ 
     const UpdateProductDetails = async () => {
         if (validateForm()) {
             await axiosUpdateProduct(id, product);
-            notifysuccess("The details of '" + product.productName + "' has been updated successfully!!!")
+            notifysuccess(`The details of '${product.productName}' has been updated successfully!!!`);
             history.push('/productsall');
         }
-    }
-
+    };
+ 
     return (
         <div className='add-product-form' style={myComponent}>
             <Container maxWidth="sm">
                 <Box my={5}>
                     <Typography variant="h5" align="center"><b>Update Product Details</b></Typography>
                     <FormGroup>
-                        <FormControl>
+                        <FormControl fullWidth>
                             <InputLabel>Product Name</InputLabel>
                             <Input onChange={(e) => onValueInput(e)} name="productName" value={product.productName} />
                             {errors.productName && <span style={{ color: 'red' }}>{errors.productName}</span>}
                         </FormControl>
-                        <FormControl variant="outlined" fullWidth>
+                        <FormControl fullWidth>
                             <InputLabel>Product Category</InputLabel>
                             <Select
                                 value={product.category ? product.category.categoryId : ''}
@@ -129,25 +121,25 @@ const UpdateProduct = () => {
                                 ))}
                             </Select>
                         </FormControl>
-                        <FormControl>
+                        <FormControl fullWidth>
                             <InputLabel>Product Price</InputLabel>
                             <Input onChange={(e) => onValueInput(e)} name="productPrice" value={product.productPrice} />
                             {errors.productPrice && <span style={{ color: 'red' }}>{errors.productPrice}</span>}
                         </FormControl>
-                        <FormControl>
+                        <FormControl fullWidth>
                             <InputLabel>Product Brand</InputLabel>
                             <Input onChange={(e) => onValueInput(e)} name="brand" value={product.brand} />
                             {errors.brand && <span style={{ color: 'red' }}>{errors.brand}</span>}
                         </FormControl>
-                        <Box my={3}>
-                            <Button variant="text" onClick={() => UpdateProductDetails()} color="primary" align="center">Update</Button>
-                            <Button component={Link} to={`/productsall`} variant="text" color="secondary" align="center" style={{ margin: '0px 20px' }}>Cancel</Button>
+                        <Box mt={3} textAlign="left">
+                            <Button variant="contained" onClick={UpdateProductDetails} color="primary" style={{ marginRight: '10px' }}>Update</Button>
+                            <Button component={Link} to="/productsall" variant="contained" color="secondary">Cancel</Button>
                         </Box>
                     </FormGroup>
                 </Box>
             </Container>
         </div>
-    )
-}
-
+    );
+};
+ 
 export default UpdateProduct;

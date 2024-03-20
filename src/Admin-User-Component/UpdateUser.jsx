@@ -7,12 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { axiosGetUserById, axiosUpdateUser } from '../Service-Components/ServiceUser';
 
 const myComponent = {
-    width: '550px',
-    height: '450px',
+    width: '450px',
+    height: '400px',
     overflowX: 'hidden',
     overflowY: 'hidden',
-    top: '120px',
-    left: '350px'
+    top: '170px',
+    left: '400px',
+    background: 'linear-gradient(135deg, rgb(179, 215, 227), rgb(181, 199, 222), rgb(145, 185, 234), rgba(0, 0, 0, 0.1))',
+    borderRadius: '10px',
 };
 
 toast.configure();

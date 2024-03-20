@@ -33,7 +33,13 @@ const UserRegister = () => {
   const history = useHistory();
 
   const onValueInput = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Prevent numbers in the username field
+    if (name === 'username' && /\d/.test(value)) {
+      setErrors({ ...errors, [name]: 'Please enter characters only.' });
+      return;
+    }
+    setUser({ ...user, [name]: value });
   };
 
   const notifysuccess = (msg) => {
@@ -93,7 +99,7 @@ const UserRegister = () => {
       <HomeNavbar />
       <div className='register-form'>
         <Container maxWidth='sm'>
-          <Box my={1} border={1} borderRadius={10} p={2} tyle={{ marginTop: '50px' }}>
+          <Box my={1} border={1} borderRadius={10} p={2} style={{ width: "320px", height: "330px" }}>
             <Typography variant='h5' align='center'>
               Customer Registration Form
             </Typography>
@@ -109,7 +115,7 @@ const UserRegister = () => {
                       value={username}
                     />
                     {errors.username && (
-                      <span style={{ color: 'purple' }}>{errors.username}</span>
+                      <span style={{ color: 'red' }}>{errors.username}</span>
                     )}
                   </FormControl>
                 </Grid>
@@ -123,7 +129,7 @@ const UserRegister = () => {
                       value={email}
                     />
                     {errors.email && (
-                      <span style={{ color: 'purple' }}>{errors.email}</span>
+                      <span style={{ color: 'red' }}>{errors.email}</span>
                     )}
                   </FormControl>
                 </Grid>
@@ -140,7 +146,7 @@ const UserRegister = () => {
                       type='password'
                     />
                     {errors.password && (
-                      <span style={{ color: 'purple' }}>{errors.password}</span>
+                      <span style={{ color: 'red' }}>{errors.password}</span>
                     )}
                   </FormControl>
                 </Grid>

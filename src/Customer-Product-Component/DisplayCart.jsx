@@ -26,6 +26,9 @@ const dialogStyles = {
       color: 'purple',
     },
   },
+  paymentDialogPaper: {
+    width: '400px',
+  },
 };
 
 const DisplayCart = () => {
@@ -194,24 +197,16 @@ const DisplayCart = () => {
         onClose={handleClosePaymentDialog}
         aria-labelledby="payment-dialog-title"
         PaperProps={{
-          sx: {
-            '& .MuiDialog-paper': {
-              width: '400px',
-            },
-          },
+          sx: dialogStyles.paymentDialogPaper,
         }}
       >
-        <DialogTitle id="payment-dialog-title">Make Payment</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="payment-dialog-title" sx={dialogStyles.dialogTitle}>Make Payment</DialogTitle>
+        <DialogContent sx={dialogStyles.dialogContent}>
           <Typography variant="body1">Please proceed to make the payment.</Typography>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCancelPayment} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handlePaymentComplete} color="primary" autoFocus>
-            Complete Payment
-          </Button>
+        <DialogActions sx={dialogStyles.dialogActions}>
+          <Button onClick={handleCancelPayment} color="primary">Cancel</Button>
+          <Button onClick={handlePaymentComplete} color="primary" autoFocus>Complete Payment</Button>
         </DialogActions>
       </Dialog>
 
@@ -232,12 +227,8 @@ const DisplayCart = () => {
           <Typography variant="body1">Your order will be placed via Cash on Delivery. Are you sure?</Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseCODDialog} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleConfirmCOD} color="primary" autoFocus>
-            Confirm
-          </Button>
+          <Button onClick={handleCloseCODDialog} color="primary">Cancel</Button>
+          <Button onClick={handleConfirmCOD} color="primary" autoFocus>Confirm</Button>
         </DialogActions>
       </Dialog>
 

@@ -6,9 +6,10 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./Image-Components/furniture1.jpg");
+  background-image: url("./Image-Components/furniture2.png");
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   height: 550px;
 }
 

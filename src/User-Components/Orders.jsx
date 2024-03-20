@@ -17,6 +17,16 @@ const Orders = () => {
     setOrder(response.data);
   }
 
+  const formatOrderDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${year}-${month}-${day}/Time- ${hours}:${minutes}`;
+  };
+  
   return (
     <div>
     <div className='allOrders-tbl'>
@@ -37,7 +47,7 @@ const Orders = () => {
             {order.map((data) => (
               <TableRow key={data.orderId}>
                 <TableCell><b>{data.orderId}</b></TableCell>
-                <TableCell><b>{data.date}</b></TableCell>
+                <TableCell><b>{formatOrderDate(data.date)}</b></TableCell>
                 <TableCell><b>{data.status}</b></TableCell>
                 <TableCell><b>{data.orderedCartDTO.totalPrice}</b></TableCell>
                 <TableCell>
