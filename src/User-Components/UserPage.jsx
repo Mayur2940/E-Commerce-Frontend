@@ -12,14 +12,14 @@ import UploadImage from '../Admin-Product-Component/UploadImage'
 import UpdateProduct from '../Admin-Product-Component/UpdateProduct'
 import OrderedItems from './OrderedItems';
 import UserLogOut from './UserLogOut';
-import HomeNavbar from '../MainPage-Components/HomeNavbar';
+
 
 
 const UserPage = () => {
   return (
     <div>
       <Router>
-        <HomeNavbar />
+       
         <UserNavbar />
         <Switch>
           <Route exact path="/userlogin" component={UserLogin}></Route>

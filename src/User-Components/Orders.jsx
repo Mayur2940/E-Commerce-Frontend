@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, Paper } from '@mui/material';
+import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer, Paper, Button, Menu, MenuItem } from '@mui/material';
 import { Link } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { axiosGetOrdersByCustId } from '../Service-Components/ServiceOrder';
 
+const PAGE_SIZE = 5; // Number of orders per page
+const MAX_PAGES_DISPLAYED = 3; // Maximum number of pagination buttons displayed
+
 const Orders = () => {
-  const [order, setOrder] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   useEffect(() => {
     getOrder();
-  },[])//eslint-disable-line
+  }, []); //eslint-disable-line
 
   const getOrder = async () => {
     let custid = sessionStorage.getItem('id');
     const response = await axiosGetOrdersByCustId(custid);
     console.log(response);
-    setOrder(response.data);
-  }
+    setOrders(response.data);
+  };
 
   const formatOrderDate = (dateString) => {
     const date = new Date(dateString);
@@ -26,41 +31,133 @@ const Orders = () => {
     const minutes = date.getMinutes().toString().padStart(2, '0');
     return `${year}-${month}-${day}/Time- ${hours}:${minutes}`;
   };
-  
+
+  const totalPages = Math.ceil(orders.length / PAGE_SIZE);
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const getPageNumbers = () => {
+    const halfMaxPages = Math.floor(MAX_PAGES_DISPLAYED / 2);
+    const firstPage = Math.max(1, currentPage - halfMaxPages);
+    const lastPage = Math.min(totalPages, firstPage + MAX_PAGES_DISPLAYED - 1);
+    return Array.from({ length: lastPage - firstPage + 1 }, (_, index) => index + firstPage);
+  };
+
+  const handleSortBy = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const sortByDate = () => {
+    const sortedOrders = [...orders].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setOrders(sortedOrders);
+    setAnchorEl(null);
+  };
+
+  const sortByMonth = () => {
+    const sortedOrders = [...orders].sort((a, b) => new Date(a.date).getMonth() - new Date(b.date).getMonth());
+    setOrders(sortedOrders);
+    setAnchorEl(null);
+  };
+
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = Math.min(startIndex + PAGE_SIZE, orders.length);
+  const currentPageOrders = orders.slice(startIndex, endIndex);
+
   return (
     <div>
-    <div className='allOrders-tbl'>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell><b>Order ID</b></TableCell>
-              <TableCell><b>Order Date</b></TableCell>
-              <TableCell><b>Order Status</b></TableCell>
-              <TableCell><b>TotalPrice</b></TableCell>
-              <TableCell><b>Items</b></TableCell>
-              
-
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {order.map((data) => (
-              <TableRow key={data.orderId}>
-                <TableCell><b>{data.orderId}</b></TableCell>
-                <TableCell><b>{formatOrderDate(data.date)}</b></TableCell>
-                <TableCell><b>{data.status}</b></TableCell>
-                <TableCell><b>{data.orderedCartDTO.totalPrice}</b></TableCell>
-                <TableCell>
-                  <Link to={`/orders/${data.orderId}`}><b>See Items</b></Link>
-                </TableCell>
+      <div className='sort-buttons' style={{ paddingLeft: '22px' }}>
+        <Button
+          variant="outlined"
+          onClick={handleSortBy}
+          style={{ backgroundColor: '#f0f0f0', color: '#333', paddingLeft: '10px', marginTop: '10px' }} // Change background color and text color
+        >
+          Sort By
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+        >
+          <MenuItem onClick={sortByDate} style={{ backgroundColor: '#f0f0f0', color: '#333' }}>Date</MenuItem> {/* Change background color and text color */}
+          <MenuItem onClick={sortByMonth} style={{ backgroundColor: '#f0f0f0', color: '#333' }}>Month</MenuItem> {/* Change background color and text color */}
+        </Menu>
+      </div>
+      <div className='allOrders-tbl'>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell><b>Order ID</b></TableCell>
+                <TableCell><b>Order Date</b></TableCell>
+                <TableCell><b>Order Status</b></TableCell>
+                <TableCell><b>TotalPrice</b></TableCell>
+                <TableCell><b>Items</b></TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {currentPageOrders.map((data) => (
+                <TableRow key={data.orderId}>
+                  <TableCell><b>{data.orderId}</b></TableCell>
+                  <TableCell><b>{formatOrderDate(data.date)}</b></TableCell>
+                  <TableCell><b>{data.status}</b></TableCell>
+                  <TableCell><b>{data.orderedCartDTO.totalPrice}</b></TableCell>
+                  <TableCell>
+                    <Link to={`/orders/${data.orderId}`}><b>See Items</b></Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      <div className='pagination'>
+        <Button
+          disabled={currentPage === 1}
+          onClick={goToPreviousPage}
+          variant="outlined"
+          style={{ margin: '5px' }}
+        >
+          Previous
+        </Button>
+        {getPageNumbers().map((page) => (
+          <Button
+            key={page}
+            onClick={() => goToPage(page)}
+            variant="outlined"
+            style={{ margin: '5px', backgroundColor: currentPage === page ? 'blue' : 'lightblue', color: currentPage === page ? 'white' : 'black' }}
+          >
+            {page}
+          </Button>
+        ))}
+        <Button
+          disabled={currentPage === totalPages}
+          onClick={goToNextPage}
+          variant="outlined"
+          style={{ margin: '5px' }}
+        >
+          Next
+        </Button>
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default Orders;

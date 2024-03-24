@@ -16,8 +16,8 @@ const styling = makeStyles({
     customerButton: {
         color: 'white',
         background: 'black', // Change the button color here
-        borderRadius: '20px',
-        padding: '20px 30px',
+        borderRadius: '15px',
+        padding: '10px 15px',
         fontSize: '1.1em',
         fontWeight: 'bold',
         marginRight: '10px',
@@ -27,15 +27,15 @@ const styling = makeStyles({
     adminButton: {
         color: 'white',
         background: 'black', // Change the button color here
-        borderRadius: '20px',
-        padding: '20px 30px',
+        borderRadius: '15px',
+        padding: '10px 15px',
         fontSize: '1.1em',
         fontWeight: 'bold',
         transition: 'background-color 0.3s',
     },
     logoContainer: {
-        width: '100px', // Increase width to accommodate space and border
-        height: '80px', // Increase height to accommodate space and border
+        width: '80px', // Increase width to accommodate space and border
+        height: '70px', // Increase height to accommodate space and border
         overflow: 'hidden', // Hide overflow content
         display: 'flex',
         alignItems: 'center',

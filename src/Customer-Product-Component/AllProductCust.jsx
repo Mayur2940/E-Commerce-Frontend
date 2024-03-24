@@ -16,6 +16,7 @@ const AllProductCust = () => {
     const [product, setProduct] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState("");
+    const [sortBy, setSortBy] = useState(""); // State variable for sorting
 
     useEffect(() => {
         getProducts();
@@ -60,6 +61,24 @@ const AllProductCust = () => {
         history.push('/viewproducts');
     };
 
+    const handleSortChange = (e) => {
+        const sortOption = e.target.value;
+        setSortBy(sortOption);
+        // Implement sorting logic here
+        if (sortOption === 'productName') {
+            const sortedProducts = [...product].sort((a, b) => a.productName.localeCompare(b.productName));
+            setProduct(sortedProducts);
+        } else if (sortOption === 'productPrice') {
+            const sortedProducts = [...product].sort((a, b) => parseFloat(a.productPrice) - parseFloat(b.productPrice));
+            setProduct(sortedProducts);
+        } else {
+            // Display all products when "None" option is selected
+            getProducts();
+        }
+    };
+    
+    
+
     return (
         <div className="all-product-cust">
             <Paper className="categories-paper">
@@ -67,21 +86,28 @@ const AllProductCust = () => {
                     Category
                 </Typography>
                 <div className="category-list">
-    <select
-        value={selectedCategoryId}
-        onChange={(e) => DisplayCategoryProducts(e.target.value)}
-        className="category-dropdown"
-    >
-        <option value="">All</option>
-        {categories.map((category) => (
-            <option key={category.categoryId} value={category.categoryId}>
-                {category.categoryName}
-            </option>
-        ))}
-    </select>
-</div>
-
-</Paper>
+                    <select
+                        value={selectedCategoryId}
+                        onChange={(e) => DisplayCategoryProducts(e.target.value)}
+                        className="category-dropdown"
+                    >
+                        <option value="">All</option>
+                        {categories.map((category) => (
+                            <option key={category.categoryId} value={category.categoryId}>
+                                {category.categoryName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>Sort By:</label>
+                    <select value={sortBy} onChange={handleSortChange}>
+                        <option value="">None</option>
+                        <option value="productName">Name</option>
+                        <option value="productPrice">Price</option>
+                    </select>
+                </div>
+            </Paper>
 
             <div className="product-cards">
                 {product.map((data) => (

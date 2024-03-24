@@ -14,7 +14,7 @@ body {
     padding: 16px;
     max-height: 100px; /* Set height to auto for dynamic height */
     overflow-y: 200px; /* Add scroll when needed */
-    background: #0e534d;
+    background: #6eb8b6;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

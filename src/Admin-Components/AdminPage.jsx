@@ -15,13 +15,11 @@ import UpdateCategory from '../Category-Components/UpdateCategory'
 import AllOrders from './AllOrders'
 import OrderedItems from './OrderedItems'
 import UploadImage from '../Admin-Product-Component/UploadImage'
-import HomeNavbar from '../MainPage-Components/HomeNavbar'
 
 
 const AdminPage = () => {
   return (
     <Router>
-      <HomeNavbar />
       <AdminNavbar />
       <Switch>
         <Route exact path="/admin" component={AdminLogin}></Route>

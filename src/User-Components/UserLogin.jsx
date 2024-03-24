@@ -74,11 +74,22 @@ const UserLogin = () => {
         }
     };
 
+    const handleClose = () => {
+        // Set logout message
+    
+        // Simulating delay before redirecting
+        setTimeout(() => {
+            // Redirecting to another page using window.location.href
+            window.location.href = '/nav';
+        }, 10); // Redirect after 2 seconds
+    }
+
     return (
         <div>
             <HomeNavbar />
             <div className="login-form">
                 <Container maxWidth="sm" className="form-container">
+                <button onClick={handleClose} style={{ position: 'absolute', top: 20, right: 20, border: 'none', background: 'none', cursor: 'pointer',color:'black',fontSize:'20px' }}>x</button>
                     <Typography variant="h5" align="center" className="form-title">
                         Customer Login
                     </Typography>

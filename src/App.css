@@ -243,9 +243,11 @@
   position: relative;
   top: 20px;
   background-color: white;
-  width: 800px;
-  left: 200px;
+  width: 1222px;
+  
 }
+
+
 
 .add-category {
   background-color: white;
@@ -476,3 +478,37 @@
 
 }
 
+/* CSS for Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 5px;
+  background-color: rgb(191, 213, 220);
+  border: 1px solid #000;
+}
+
+.pagination button:hover {
+  background-color: rgb(98, 98, 98);
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: lightgrey;
+  color: black;
+}
+
+
+/* CSS for Sort Button */
+.sort-buttons{
+  color: #ddefda;
+}
+
+/*  CSS For VIEW BY*/
+.view-by{
+  width: 10px;
+}
